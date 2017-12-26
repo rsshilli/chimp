@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const packageJson = require('../package.json')
 const exec = require('./lib/exec')
-exec(`npm install --quite`)
 exec(`npm run transpile  --quite`)
 exec(`cd ${process.cwd()}/${packageJson.chimpDir} && npm i --quite`)
 if (process.env.CIRCLECI) {
