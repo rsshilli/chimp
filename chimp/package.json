@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "mocha **/*-spec.js --require babel-register --ui bdd --timeout 100000 ./.config/mocha.bootstrap.js",
+    "test": "mocha *-spec.js --recursive --require babel-register --ui bdd --timeout 100000 ./.config/mocha.bootstrap.js",
     "install": "npm update --dev --save"
   },
   "dependencies": {

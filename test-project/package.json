@@ -11,7 +11,7 @@
     "jest": "jest jest.spec.js",
     "ava": "NODE_PRESERVE_SYMLINKS=1 ava ava.spec.js",
     "jasmine": "babel-node ./util/jasmine.js",
-    "test": "NODE_PRESERVE_SYMLINKS=1 npm run cucumber && sleep 1 && npm run mocha && sleep 1 && npm run jest && sleep 1 && npm run jasmine && npm run ava",
+    "test": "echo Call full test suite from one directory up fro here && exit 1",
     "install": "npm update --dev --save",
     "postinstall": "npm link chimp"
   },

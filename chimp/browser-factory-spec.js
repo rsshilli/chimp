@@ -135,7 +135,7 @@ describe('BrowserFactory', function () {
     it('should spawn a synchronous forker using the same environment node', function () {
       td.verify(this.childProcess.spawnSync(
         process.argv[0], [
-          `${__dirname}/utils/forker.js`,
+          `${__dirname}/utils/forker-script.js`,
           td.matchers.anything(),
           td.matchers.anything(),
           td.matchers.anything(),
