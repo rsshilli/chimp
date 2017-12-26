@@ -5,15 +5,28 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
+      - run: echo $(wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm | head -c96 | strings | rev | awk -F"[:-]" '/emorhc/ { print $1 "-" $2 }' | rev) > ~/chrome-version.txt
       - restore_cache:
-          key: cache-{{ checksum "package.json" }}-{{ checksum "chimp/package.json" }}-{{ checksum "test-project/package.json" }}-{{ checksum "/opt/google/chrome/google-chrome" }}
+          key: chrome-{{ checksum "/opt/google/chrome/google-chrome" }}
+          key: root-{{ checksum "package.json" }}
+          key: chimp-{{ checksum "chimp/package.json" }}
+          key: test-project-{{ checksum "test-project/package.json" }}
       - run: .circleci/install-chrome.sh
       - run: npm run setup
       - save_cache:
-          key: cache-{{ checksum "package.json" }}-{{ checksum "chimp/package.json" }}-{{ checksum "test-project/package.json" }}-{{ checksum "/opt/google/chrome/google-chrome" }}
+          key: chrome-{{ checksum "/opt/google/chrome/google-chrome" }}
           paths:
             - /opt/google/chrome
+      - save_cache:
+          key: root-{{ checksum "package.json" }}
+          paths:
             - node_modules
+      - save_cache:
+          key: chimp-{{ checksum "chimp/package.json" }}
+          paths:
             - chimp/node_modules
+      - save_cache:
+          key: test-project-{{ checksum "test-project/package.json" }}
+          paths:
             - test-project/node_modules
       - run: npm run test
