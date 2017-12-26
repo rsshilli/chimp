@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:7.10
+    environment:
+      - NPM_CONFIG_LOGLEVEL: "warn"
     steps:
       - checkout
       - run: .circleci/get-latest-chrome-version.sh
