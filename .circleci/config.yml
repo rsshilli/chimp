@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: .circle/get-latest-chrome-version.sh
+      - run: .circleci/get-latest-chrome-version.sh
       - restore_cache:
           key: chrome-{{ checksum "~/chrome-version" }}
       - restore_cache:
