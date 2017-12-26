@@ -8,10 +8,10 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: .circleci/install-chrome.sh
-      - run: npm run setup --quite
+      - run: npm run setup
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - /opt/google/chrome
             - node_modules
-      - run: npm run test --quite
+      - run: npm run test
