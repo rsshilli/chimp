@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: .circleci/get-latest-chrome-version.sh
+      - run: sudo chmod -R a+rw /opt/google/chrome
       - restore_cache:
           key: chrome-{{ checksum "~/chrome-version" }}
       - restore_cache:
