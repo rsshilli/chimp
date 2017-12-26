@@ -13,8 +13,7 @@
     "lintfix": "eslint --cache --fix .",
     "test": "node ./scripts/test.js",
     "publish": "npm run transpile",
-    "install": "npm update --dev --save",
-    "setup": "npm install && node ./scripts/setup.js",
+    "setup": "node ./scripts/setup.js",
     "reset": "npm run clean && npm run setup"
   },
   "watch": {

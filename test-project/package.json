@@ -7,11 +7,11 @@
   "repository": "http://github.com/xolvio/chimp",
   "scripts": {
     "cucumber": "NODE_PRESERVE_SYMLINKS=1 cucumberjs --compiler js:babel-core/register",
-    "mocha": "mocha --compilers js:babel-core/register --require source-map-support/register mocha*.js --timeout 100000 --watch",
+    "mocha": "mocha --compilers js:babel-core/register --require source-map-support/register mocha*.js --timeout 100000",
     "jest": "jest jest.spec.js",
-    "ava": "ava ava.spec.js",
+    "ava": "NODE_PRESERVE_SYMLINKS=1 ava ava.spec.js",
     "jasmine": "babel-node ./util/jasmine.js",
-    "test": "NODE_PRESERVE_SYMLINKS=1 npm run cucumber && sleep 1 && npm run mocha && sleep 1 && npm run jest && sleep 1 && npm run jasmine",
+    "test": "NODE_PRESERVE_SYMLINKS=1 npm run cucumber && sleep 1 && npm run mocha && sleep 1 && npm run jest && sleep 1 && npm run jasmine && npm run ava",
     "install": "npm update --dev --save",
     "postinstall": "npm link chimp"
   },

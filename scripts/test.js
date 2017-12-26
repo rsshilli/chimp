@@ -2,7 +2,7 @@
 const packageJson = require('../package.json')
 const exec = require('./lib/exec')
 
-exec(`npm run lint`)
+exec(`npm run lint --quite`)
 
 const chimpTestsResultCode = exec(`cd ${process.cwd()}/${packageJson.chimpDir} && npm test`).code
 const testProjectTestsResultCode = exec(`cd ${process.cwd()}/${packageJson.testProjectDir} && npm test`).code
