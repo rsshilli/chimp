@@ -3,8 +3,9 @@
 ## Priorities
 
 ### Must
-* [ ] Add linting to the test cycle
-* [ ] Setup on CI (Circle or Travis)
+* [x] Add linting to the test cycle
+* [x] Setup on CircleCI
+  * [ ] Setup caching
 * [x] Rewrite `ChromeDriver` process management spike using TDD
 * [x] Rewrite `BrowserFactory` spike using TDD
 * [ ] Rewrite `DDP` module using using TDD
