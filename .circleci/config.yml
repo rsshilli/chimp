@@ -7,14 +7,17 @@ jobs:
       - checkout
       - run: echo $(wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm | head -c96 | strings | rev | awk -F"[:-]" '/emorhc/ { print $1 "-" $2 }' | rev) > ~/chrome-version.txt
       - restore_cache:
-          key: chrome-{{ checksum "/opt/google/chrome/google-chrome" }}
+          key: chrome-{{ checksum "~/chrome-version.txt" }}
+      - restore_cache:
           key: root-{{ checksum "package.json" }}
+      - restore_cache:
           key: chimp-{{ checksum "chimp/package.json" }}
+      - restore_cache:
           key: test-project-{{ checksum "test-project/package.json" }}
       - run: .circleci/install-chrome.sh
       - run: npm run setup
       - save_cache:
-          key: chrome-{{ checksum "/opt/google/chrome/google-chrome" }}
+          key: chrome-{{ checksum "~/chrome-version.txt" }}
           paths:
             - /opt/google/chrome
       - save_cache:
