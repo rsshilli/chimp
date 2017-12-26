@@ -36,6 +36,7 @@
 * [ ] Cucumber smart watch mode (using code coverage Wallaby style)  
 * [ ] Session reuse module (belongs in Webdriver.io)
 * [ ] Appium support (a downloader like Selenium)
+* [ ] Should we support [Puppeteer](https://github.com/GoogleChrome/puppeteer)?
 
 ## Plan
 * *alpha release* 

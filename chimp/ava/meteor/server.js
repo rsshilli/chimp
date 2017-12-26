@@ -1,8 +1,8 @@
-import test from 'ava';
+import test from 'ava'
 import server from '../../meteor/server-base'
 
 test.before(() => {
-  server.connect();
-});
+  server.connect()
+})
 
-export default server;
+export default server

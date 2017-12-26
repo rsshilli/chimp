@@ -7,7 +7,7 @@
   "repository": "http://github.com/xolvio/chimp",
   "scripts": {
     "cucumber": "NODE_PRESERVE_SYMLINKS=1 cucumberjs --compiler js:babel-core/register",
-    "mocha": "mocha --compilers js:babel-core/register --require source-map-support/register mocha*.js --timeout 100000",
+    "mocha": "mocha --compilers js:babel-core/register --require source-map-support/register mocha*.js --timeout 100000 --watch",
     "jest": "jest jest.spec.js",
     "ava": "ava ava.spec.js",
     "jasmine": "babel-node ./util/jasmine.js",

@@ -1,8 +1,8 @@
-import {Before, After} from 'cucumber';
+import {Before} from 'cucumber'
 import server from '../../meteor/server-base'
 
-Before(function() {
-    server.connect();
-});
+Before(function () {
+  server.connect()
+})
 
-export default server;
+export default server

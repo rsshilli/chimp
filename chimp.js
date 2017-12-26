@@ -1,0 +1,3 @@
+module.export = {
+  driver: 'pupeteer'
+}

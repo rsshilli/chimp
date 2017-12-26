@@ -1,0 +1,18 @@
+{
+  "extends": "standard",
+  "globals": {
+    "jasmine": true,
+    "browser": true,
+    "td": true,
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "before": true,
+    "after": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "beforeAll": true,
+    "afterAll": true,
+    "setDefaultTimeout": true
+  }
+}
