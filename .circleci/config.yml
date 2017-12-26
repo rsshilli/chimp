@@ -5,7 +5,13 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: sudo apt-get update && sudo apt-get install libnss3 libgconf-2-4
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: .circleci/install-chrome.sh
-      - run: npm run setup
-      - run: npm run test
+      - run: npm run setup --quite
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - /opt/google/chrome
+            - node_modules
+      - run: npm run test --quite
