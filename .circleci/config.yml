@@ -8,3 +8,4 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install libnss3 libgconf-2-4
       - run: .circleci/install-chrome.sh
       - run: npm run setup
+      - run: npm run test

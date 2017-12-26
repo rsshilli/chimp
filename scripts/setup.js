@@ -10,4 +10,3 @@ if (process.env.CIRCLECI) {
 }
 exec(`cd ${process.cwd()}/${packageJson.distDir} && npm i`)
 exec(`cd ${process.cwd()}/${packageJson.testProjectDir} && npm i`)
-exec(`npm test`)
