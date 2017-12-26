@@ -5,7 +5,7 @@
 sudo apt-get update && sudo apt-get install libnss3 libgconf-2-4
 
 # -- GET LATEST CHROME VERSION MAJOR & MINOR NUMBERS
-LATEST_CHROME_VERSION=$(wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm | head -c96 | strings | rev | awk -F"[:-]" '/emorhc/ { print $1 "-" $2 }' | rev)
+LATEST_CHROME_VERSION=`cat ~/chrome-version`
 LATEST_CHROME_VERSION_MAJOR=`echo $LATEST_CHROME_VERSION | cut -d. -f1`
 LATEST_CHROME_VERSION_MINOR=`echo $LATEST_CHROME_VERSION | cut -d. -f2`
 echo Latest version of Chrome is $LATEST_CHROME_VERSION_MAJOR.$LATEST_CHROME_VERSION_MINOR

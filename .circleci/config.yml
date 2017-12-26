@@ -5,9 +5,9 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run: echo $(wget -qO- https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm | head -c96 | strings | rev | awk -F"[:-]" '/emorhc/ { print $1 "-" $2 }' | rev) > ~/chrome-version.txt
+      - run: .circle/get-latest-chrome-version.sh
       - restore_cache:
-          key: chrome-{{ checksum "~/chrome-version.txt" }}
+          key: chrome-{{ checksum "~/chrome-version" }}
       - restore_cache:
           key: root-{{ checksum "package.json" }}
       - restore_cache:
@@ -17,7 +17,7 @@ jobs:
       - run: .circleci/install-chrome.sh
       - run: npm run setup
       - save_cache:
-          key: chrome-{{ checksum "~/chrome-version.txt" }}
+          key: chrome-{{ checksum "~/chrome-version" }}
           paths:
             - /opt/google/chrome
       - save_cache:
