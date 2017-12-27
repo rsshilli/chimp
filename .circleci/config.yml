@@ -31,6 +31,7 @@ jobs:
           key: chimp-{{ checksum "chimp/package.json" }}
           paths:
             - chimp/node_modules
+            - dist/node_modules
       - save_cache:
           key: test-project-{{ checksum "test-project/package.json" }}
           paths:
