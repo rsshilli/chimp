@@ -1,19 +1,20 @@
 # Chimp.js
-[![Circle CI](https://circleci.com/gh/xolvio/chimp.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/xolvio/chimp) [![npm Version](https://img.shields.io/npm/dm/chimp.svg)](https://www.npmjs.com/package/chimp) [![License](https://img.shields.io/npm/l/chimp.svg)](https://www.npmjs.com/package/chimp) [![Gitter](https://img.shields.io/gitter/room/xolvio/chimp.svg)](https://gitter.im/xolvio/chimp)  [![Slack Status](http://community.xolv.io/badge.svg)](http://community.xolv.io)
+[![Circle CI](https://circleci.com/gh/xolvio/chimp.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/xolvio/chimp) [![npm Version](https://img.shields.io/npm/dm/chimp.svg)](https://www.npmjs.com/package/chimp) [![Gitter](https://img.shields.io/gitter/room/xolvio/chimp.svg)](https://gitter.im/xolvio/chimp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![License](https://img.shields.io/npm/l/chimp.svg)](https://www.npmjs.com/package/chimp) [![Slack Status](http://community.xolv.io/badge.svg)](http://community.xolv.io) 
 
-An awesome developer experience for writing GUI tests.
 
-Chimp takes away all the pain associated with setting up libraries tools, and allow you to focus on building-in quality.
+An awesome developer-centric experience for writing GUI tests.
+
+Chimp takes away all the pain associated with setting up libraries and tools, and allow you to focus on building-in quality.
 
 ![Chimp by Xolv.io](./images/logo.png?raw=true)
 
 Whether you're writing unit tests with React or end-to-end tests with Selenium, Chimp will help you write higher quality code, faster.  
 
-Works with:
-* Mocha, Jest, Jasmine, AVA or Cucumber.js
+You can use Chimp with:
+* [Mocha](https://mochajs.org), [Jest](https://facebook.github.io/jest), [Jasmine](https://jasmine.github.io), [AVA](https://ava.li) or [Cucumber.js](https://github.com/cucumber/cucumber-js)
 * Unit, integration, functional or end-to-end tests
-* Enzyme, WebdriverIO, Chromeless or Puppeteer
-* Web or Mobile
+* Web using [Enzyme](airbnb.io/enzyme), [WebdriverIO](http://webdriver.io), [Chromeless](https://github.com/graphcool/chromeless) or [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* Mobile using [Appium](http://appium.io) 
 
 
 ## Getting started
@@ -44,8 +45,8 @@ import driver from 'chimp/ava/driver'
 import driver from 'chimp/cucumber/driver'
 ```
 
-### 3. Use the 'driver' object with the Chimp API
-You get a fully initialized headless Chrome driver that you can automate using ES6's `async/await` to manage asynchrony like this:
+### 3. Use the `driver` object with the Chimp API
+You get a fully initialized driver that you can automate using ES6's `async/await` to manage asynchrony like this:
 
 ```javascript
 describe('The Xolv.io Website', function () {
@@ -86,10 +87,10 @@ Yes! You can use one API and swap out the driver and your tests will still work.
 
 You see we love to reuse code, and we have found that it saves a lot of time to write page objects that can be use both in unit testing and in end-to-end testing. Here are some examples:
 
-- [ ] PageObject that works in Enzyme and with WebdriverIO + ChromeDriver 
-- [ ] PageObject that works in Enzyme and with Chromeless
+- [ ] Page object that works in Enzyme and with WebdriverIO + ChromeDriver (TODO)
+- [ ] Page object that works in Enzyme and with Chromeless (TODO)
 
-For the full Chimp API, [see the API docs below](#chimp-api`)
+For the full Chimp API, [see the API docs below](#chimp-api)
 
 
 ### Debugging
@@ -172,39 +173,37 @@ This can be anywhere up the directory tree. The file looks something like this:
 ```javascript
 export default {
   driver: {
-    // see below
+    // see Configuration options
   },
   meteor: {
-    // see below
+    // see Configuration options
   }
 }
 ```
 
 #### Use the `package.json` 
 This can be anywhere up the directory tree. The file looks something like this:
-```json
+```javascript
 {
-  // ...
-  chimp: {
-    driver: {
-      // see below
-    },
-    meteor: {
-      // see below
-    }
+  driver: {
+    // see Configuration options
+  },
+  meteor: {
+    // see Configuration options
   }
 }
 ```
 
+
 #### Create a `chimprc` file 
 This can be anywhere up the directory tree. The file looks something like this:
-```json
+```javascript
 {
   driver: {
-    // see below
+    // see Configuration options
   },
   meteor: {
-    // see below
+    // see Configuration options
   }
 }
 ```
@@ -214,10 +213,18 @@ This can be anywhere up the directory tree. The file looks something like this:
 
 ##### driver
 
-###### webdriverio
-When you use this driver, Chimp starts a [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) instance for you by default. 
+Chimp has support for the drivers listed below. Click on each entry to see the available configuration options:
+* [`enzyme`](#enzyme)
+* [`webdriverio`](#webdriverio)
+* [`chromeless`](#chromeless)
+* [`puppeteer`](#puppeteer)
 
-If you would like to use other drivers like `firefox`, `safari` and `msie`, then you need to tell Webdriver.IO to set the `desiredCapabilities` in the configuration. For example, if you wanted to use Firefox, you do this:
+
+###### enzyme
+TODO
+
+###### webdriverio
+When you use this driver, Chimp starts a [chromedriver](https://sites.google.com/a/chromium.org/chromedriver) instance for you by default. If you would like to use other drivers like `firefox`, `safari` and `msie`, then you need to tell Webdriver.IO to set the `desiredCapabilities` in the configuration. For example, if you wanted to use `firefox`, you do this:
 ```javascript
 {
   driver: {
@@ -230,10 +237,18 @@ If you would like to use other drivers like `firefox`, `safari` and `msie`, then
   }
 }
 ```
+Chimp passes any configuration you place in under the `options` object directly to Webdriver.io. [Refer to the Webdriver.io configuration documentation](http://webdriver.io/guide/getstarted/configuration.html) for details.
 
-When Chimp sees that you've used a different driver than Chrome, it will automatically download and start Selenium for you. 
+When using a browser other than Chrome with WebdriverIO, Chimp will automatically download and start Xvfb and Selenium so you can still have headless magic. Note that for this to work, you will need:
+* An OS that has an X windows manager (will not work on OSX) 
+* Compatible version of Java to run Selenium
 
-Chimp passes any configuration you place in here directly to Webdriver.io. [Please see the Webdriver.io configuration documentation](http://webdriver.io/guide/getstarted/configuration.html) to see what's available.
+
+###### chromeless
+TODO
+
+###### puppeteer
+TODO
 
 ##### meteor
 TODO
@@ -241,20 +256,42 @@ TODO
 
 ## Chimp API
 
+
+#### addCommand({name, implementations})
+ 
+```javascript
+/**
+ * Allows you to add custom commands along with implementations for all the supported Chimp drivers.  
+ *
+ * @param {string} name - The name of this method. This will be added to the `driver` object
+ * @param {Object} implementations<driver, implementation> - A set of driver implementations
+ * @param {string} implementations.driver - The driver to implement the command for. You can import the chimp/drivers to get a list of available drivers, e.g. drivers.ENZYME or drivers.WEBDRIVERIO
+ * @param {string} implementations.implementation - The method that implements
+ * 
+ * @return {undefined} 
+ */
+```
+
 #### getDriver()
-Chimp provides you with a common API that you can use across frameworks. However, sometimes you may want to do something that is only available for a given driver. You can use this method to get direct access to the underlying driver.
 
-CAUTION: Be mindful that if you use this function, the code that uses this method will not be runnable across different driver. Instead of using the driver directly, you might want to consider the `addCommand` method that allows you add multiple implementations.
-
-If you find a command that you use that is not supported, please get in touch to let us know, or even better submit a Pull Request. You can see the guidelines for []adding common API command here]() TODO.  
-
-
-## Links to underlying driver APIs
-* [WebdriverIO + Selenium]() TODO
-* [WebdriverIO + Appium]() TODO
-* [Enzyme]() TODO
-* [Chromeless()]() TODO
-* [Puppeteer]() TODO
+```javascript
+/**
+ * Provides access to the underlying driver being used by Chimp.
+ * 
+ * CAUTION: Be mindful that any code that uses the driver directly will lock you to using that driver. You might want to consider the [`addCommand`](#addCommand) method that allows you add multiple implementations.
+ * 
+ * If you find a command that you use that is not supported, please get in touch to let us know, or even better submit a Pull Request. You can see the guidelines for [adding common API command here]() TODO
+ * 
+ * Below you can find links to the driver APIs used by Chimp: 
+ *   [WebdriverIO + Selenium]() TODO
+ *   [WebdriverIO + Appium]() TODO
+ *   [Enzyme]() TODO
+ *   [Chromeless()]() TODO
+ *   [Puppeteer]() TODO
+ * 
+ * @return {object}  - The driver being used in the current context
+ */
+```
 
 ---
 
@@ -312,4 +349,3 @@ TODO
 1. Increase the version in the `chimp/package.json` file
 2. `npm run publish`
 ```
-
