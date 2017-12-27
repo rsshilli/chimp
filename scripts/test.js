@@ -20,4 +20,5 @@ if (chimpTestsResultCode !== 0) {
     console.error(`${framework} Tests Failed`)
     process.exit(1)
   }
+  exec(`sleep 2`)
 })
