@@ -18,6 +18,7 @@ jobs:
           key: root-{{ checksum "package.json" }}
           paths:
             - node_modules
+            - .eslintcache
       - save_cache:
           key: chimp-{{ checksum "chimp/package.json" }}
           paths:
