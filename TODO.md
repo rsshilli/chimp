@@ -5,7 +5,7 @@
 ### Must
 * [x] Add linting to the test cycle
 * [x] Setup on CircleCI
-  * [ ] Setup caching
+  * [x] Setup caching
 * [x] Rewrite `ChromeDriver` process management spike using TDD
 * [x] Rewrite `BrowserFactory` spike using TDD
 * [ ] Rewrite `DDP` module using using TDD
@@ -38,6 +38,7 @@
 * [ ] Session reuse module (belongs in Webdriver.io)
 * [ ] Appium support (a downloader like Selenium)
 * [ ] Should we support [Puppeteer](https://github.com/GoogleChrome/puppeteer)?
+* [ ] Support custom frameworks (expose factory + supporting code)
 
 ## Plan
 * *alpha release* 
