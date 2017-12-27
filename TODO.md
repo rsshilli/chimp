@@ -19,10 +19,11 @@
   * [x] Example of imports, debug mode etc
   * [x] Meteor DDP connections example
   * [ ] Where to go for other framework docs
-  * [ ] Selenium Server integration
+  * [ ] Selenium Server integration + auto XVFB https://www.npmjs.com/package/xvfb
   * [ ] SauceLabs integration
   * [ ] BrowserStack integration
   * [ ] TestingBot integration
+* [ ] Automated Javascript Docs for API output (jsdoc?)
 
 ### Should
 * [ ] Add colors library for messaging
@@ -31,6 +32,7 @@
 * [ ] Log output to file from `LongRunningProcess`
 * [ ] Make it work for other browsers (Firefox, Safari, IE)
 * [x] Add Jasmine support (as well as Jest)
+* [ ] Add Chimp test coverage reporting (coveralls?)
 
 ### Could
 * [ ] DDP watcher - restarts when Meteor reloads (generalize for other frameworks too)
