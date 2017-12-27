@@ -10,11 +10,10 @@ Chimp takes away all the pain associated with setting up libraries and tools, an
 
 Whether you're writing unit tests with React or end-to-end tests with Selenium, Chimp will help you write higher quality code, faster.  
 
-You can use Chimp with:
-* [Mocha](https://mochajs.org), [Jest](https://facebook.github.io/jest), [Jasmine](https://jasmine.github.io), [AVA](https://ava.li) or [Cucumber.js](https://github.com/cucumber/cucumber-js)
-* Unit, integration, functional or end-to-end tests
-* Web using [Enzyme](airbnb.io/enzyme), [WebdriverIO](http://webdriver.io), [Chromeless](https://github.com/graphcool/chromeless) or [Puppeteer](https://github.com/GoogleChrome/puppeteer)
-* Mobile using [Appium](http://appium.io) 
+Chimp allows you to:
+* Write unit, integration, functional or end-to-end tests using [Mocha](https://mochajs.org), [Jest](https://facebook.github.io/jest), [Jasmine](https://jasmine.github.io), [AVA](https://ava.li) or [Cucumber.js](https://github.com/cucumber/cucumber-js)
+* Use common automation API that drives using [Enzyme](airbnb.io/enzyme), [WebdriverIO](http://webdriver.io), [Chromeless](https://github.com/graphcool/chromeless) or [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* Drive web automation using [JSDOM](https://github.com/tmpvar/jsdom), [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver) and [Selenium](http://www.seleniumhq.org)
 
 
 ## Getting started
@@ -75,8 +74,6 @@ Chimp provides a **common API** that can **interchangeably** be used across the 
 - [x] WebdriverIO + ChromeDriver
 - [ ] WebdriverIO + Selenium Grid (remote Firefox/IE/Safari - e.g. BrowserStack) 
 - [ ] WebdriverIO + Selenium Standalone (local Firefox/IE/Safari)
-- [ ] WebdriverIO + Appium (local Android/iOS/Windows)
-- [ ] WebdriverIO + Appium (remote Android/iOS/Windows - e.g. SauceLabs)
 - [ ] Enzyme
 - [ ] Chromeless
 - [ ] Puppeteer
@@ -283,8 +280,7 @@ TODO
  * If you find a command that you use that is not supported, please get in touch to let us know, or even better submit a Pull Request. You can see the guidelines for [adding common API command here]() TODO
  * 
  * Below you can find links to the driver APIs used by Chimp: 
- *   [WebdriverIO + Selenium]() TODO
- *   [WebdriverIO + Appium]() TODO
+ *   [WebdriverIO]() TODO
  *   [Enzyme]() TODO
  *   [Chromeless()]() TODO
  *   [Puppeteer]() TODO
