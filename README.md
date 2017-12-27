@@ -2,7 +2,7 @@
 [![Circle CI](https://circleci.com/gh/xolvio/chimp.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/xolvio/chimp) [![npm Version](https://img.shields.io/npm/dm/chimp.svg)](https://www.npmjs.com/package/chimp) [![Gitter](https://img.shields.io/gitter/room/xolvio/chimp.svg)](https://gitter.im/xolvio/chimp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![License](https://img.shields.io/npm/l/chimp.svg)](https://www.npmjs.com/package/chimp) [![Slack Status](http://community.xolv.io/badge.svg)](http://community.xolv.io) 
 
 
-An awesome developer-centric experience for writing GUI tests.
+### An *awesome* developer-centric experience for writing GUI tests.
 
 Chimp takes away all the pain associated with setting up libraries and tools, and allow you to focus on building-in quality.
 
@@ -11,10 +11,22 @@ Chimp takes away all the pain associated with setting up libraries and tools, an
 Whether you're writing unit tests with React or end-to-end tests with Selenium, Chimp will help you write higher quality code, faster.  
 
 Chimp allows you to:
-* Write unit, integration, functional or end-to-end tests using [Mocha](https://mochajs.org), [Jest](https://facebook.github.io/jest), [Jasmine](https://jasmine.github.io), [AVA](https://ava.li) or [Cucumber.js](https://github.com/cucumber/cucumber-js)
-* Use common automation API that drives using [Enzyme](airbnb.io/enzyme), [WebdriverIO](http://webdriver.io), [Chromeless](https://github.com/graphcool/chromeless) or [Puppeteer](https://github.com/GoogleChrome/puppeteer)
-* Drive web automation using [JSDOM](https://github.com/tmpvar/jsdom), [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver) and [Selenium](http://www.seleniumhq.org)
-
+* Write web automation tasks such as crawling, scraping, submitting forms and taking screenshots
+* Write unit, integration, functional or end-to-end tests using the following testing frameworks:
+  * [Mocha](https://mochajs.org)
+  * [Jest](https://facebook.github.io/jest)
+  * [Jasmine](https://jasmine.github.io)
+  * [AVA](https://ava.li)
+  * [Cucumber.js](https://github.com/cucumber/cucumber-js)  
+* Use a common API across the following drivers:
+  * [Enzyme](http://airbnb.io/enzyme)
+  * [WebdriverIO](http://webdriver.io)
+  * [Chromeless](https://github.com/graphcool/chromeless)
+  * [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* Use a common API across the following browsers:
+  * Emulation using [JSDOM](https://github.com/tmpvar/jsdom))
+  * Headless/non-headless Chrome using [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver)
+  * Chrome, Firefox, Safari, Internet Explorer or Opera using [Selenium](http://www.seleniumhq.org/docs/01_introducing_selenium.jsp)
 
 ## Getting started
 ### 1. Install Chimp in your project:
@@ -344,4 +356,3 @@ TODO
 ## Releasing
 1. Increase the version in the `chimp/package.json` file
 2. `npm run publish`
-```
