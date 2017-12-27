@@ -24,7 +24,7 @@ Chimp allows you to:
   * [Chromeless](https://github.com/graphcool/chromeless)
   * [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * Use a common API across the following browsers:
-  * Emulation using [JSDOM](https://github.com/tmpvar/jsdom))
+  * Emulation using [JSDOM](https://github.com/tmpvar/jsdom)
   * Headless/non-headless Chrome using [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver)
   * Chrome, Firefox, Safari, Internet Explorer or Opera using [Selenium](http://www.seleniumhq.org/docs/01_introducing_selenium.jsp)
 
@@ -54,6 +54,9 @@ import driver from 'chimp/ava/driver'
 
 // Cucumber
 import driver from 'chimp/cucumber/driver'
+
+// Generic (used for custom test frameworks / web automation)
+import driver from 'chimp/driver' // (TODO)
 ```
 
 ### 3. Use the `driver` object with the Chimp API
@@ -80,24 +83,26 @@ mocha --compilers js:babel-core/register my-spec.js
 That's it!
 
 ### Drivers (formerly Browsers)
-In previous versions of Chimp, the automation object was a `browser`. While this is still available for backwards compatibility, the automation object is now a `driver`. This is because the driver may not always be a browser. For example, when you use Chimp with React, Chimp will use Enzyme, which uses JSDOM, which is not a browser per se.
+In previous versions of Chimp, the automation object was a `browser`, and now it's a `driver`. This is because the driver may not always be a browser. For example, when you use Chimp with React, Chimp will use Enzyme + JSDOM, which is not a browser per se. 
 
-Chimp provides a **common API** that can **interchangeably** be used across the following browsers:
-- [x] WebdriverIO + ChromeDriver
-- [ ] WebdriverIO + Selenium Grid (remote Firefox/IE/Safari - e.g. BrowserStack) 
-- [ ] WebdriverIO + Selenium Standalone (local Firefox/IE/Safari)
+Chimp provides a **common API** that can **interchangeably** be used across the following driver configurations:
 - [ ] Enzyme
+- [x] WebdriverIO + ChromeDriver 
+- [ ] WebdriverIO + Selenium Standalone (local Firefox/IE/Safari)
+- [ ] WebdriverIO + Selenium Grid (remote Firefox/IE/Safari - e.g. BrowserStack)
 - [ ] Chromeless
 - [ ] Puppeteer
 
 Wait.. what? Interchangeably?  
 
-Yes! You can use one API and swap out the driver and your tests will still work.
+Yes! You can Chimp's common API and swap out the driver based on your needs.
 
-You see we love to reuse code, and we have found that it saves a lot of time to write page objects that can be use both in unit testing and in end-to-end testing. Here are some examples:
+You see we love to reuse code, and we have found that it saves a lot of time to write page objects that can be use both in unit and in end-to-end testing. Here are some examples:
 
 - [ ] Page object that works in Enzyme and with WebdriverIO + ChromeDriver (TODO)
 - [ ] Page object that works in Enzyme and with Chromeless (TODO)
+
+
 
 For the full Chimp API, [see the API docs below](#chimp-api)
 
