@@ -2,27 +2,27 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:7.10-browsers
     environment:
-      - NPM_CONFIG_LOGLEVEL: "warn"
+      - NPM_CONFIG_LOGLEVEL: "error"
     steps:
       - checkout
-      - run: .circleci/get-latest-chrome-version.sh
-      - run: sudo chmod -R a+rw /opt
-      - restore_cache:
-          key: chrome-{{ checksum "~/chrome-version" }}
+#      - run: .circleci/get-latest-chrome-version.sh
+#      - run: sudo chmod -R a+rw /opt
+#      - restore_cache:
+#          key: chrome-{{ checksum "~/chrome-version" }}
       - restore_cache:
           key: root-{{ checksum "package.json" }}
       - restore_cache:
           key: chimp-{{ checksum "chimp/package.json" }}
       - restore_cache:
           key: test-project-{{ checksum "test-project/package.json" }}
-      - run: .circleci/install-chrome.sh
+#      - run: .circleci/install-chrome.sh
       - run: npm run setup
-      - save_cache:
-          key: chrome-{{ checksum "~/chrome-version" }}
-          paths:
-            - /opt/google/chrome
+#      - save_cache:
+#          key: chrome-{{ checksum "~/chrome-version" }}
+#          paths:
+#            - /opt/google/chrome
       - save_cache:
           key: root-{{ checksum "package.json" }}
           paths:
