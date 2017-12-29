@@ -1,18 +1,17 @@
 # Chimp.js
 [![Circle CI](https://circleci.com/gh/xolvio/chimp.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/xolvio/chimp) [![npm Version](https://img.shields.io/npm/dm/chimp.svg)](https://www.npmjs.com/package/chimp) [![Gitter](https://img.shields.io/gitter/room/xolvio/chimp.svg)](https://gitter.im/xolvio/chimp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![License](https://img.shields.io/npm/l/chimp.svg)](https://www.npmjs.com/package/chimp) [![Slack Status](http://community.xolv.io/badge.svg)](http://community.xolv.io) 
 
-
-### An *awesome* developer-centric experience for writing GUI tests.
+###### An awesome *developer-centric* experience for writing GUI tests.
 
 Chimp takes away all the pain associated with setting up libraries and tools, and allow you to focus on building-in quality.
 
 ![Chimp by Xolv.io](./images/logo.png?raw=true)
 
-Whether you're writing unit tests with React or end-to-end tests with Selenium, Chimp will help you write higher quality code, faster.  
+Whether you're writing unit tests with React, end-to-end tests with Selenium, or performance tests with Puppeteer w/ AWS Lambda, Chimp will help you write higher quality code, faster.
 
 Chimp allows you to:
 * Write web automation tasks such as crawling, scraping, submitting forms and taking screenshots
-* Write unit, integration, functional or end-to-end tests using the following testing frameworks:
+* Write unit, integration, functional, acceptance, performance and end-to-end tests using the following frameworks:
   * [Mocha](https://mochajs.org)
   * [Jest](https://facebook.github.io/jest)
   * [Jasmine](https://jasmine.github.io)
@@ -21,68 +20,48 @@ Chimp allows you to:
 * Use a common API across the following drivers:
   * [Enzyme](http://airbnb.io/enzyme)
   * [WebdriverIO](http://webdriver.io)
-  * [Chromeless](https://github.com/graphcool/chromeless)
   * [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+  * [Cypress](https://cypress.io)
 * Use a common API across the following browsers:
-  * Emulation using [JSDOM](https://github.com/tmpvar/jsdom)
-  * Headless/non-headless Chrome using [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver)
-  * Chrome, Firefox, Safari, Internet Explorer or Opera using [Selenium](http://www.seleniumhq.org/docs/01_introducing_selenium.jsp)
+  * [JSDOM](https://github.com/tmpvar/jsdom) - emulated browser
+  * [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver) - headless and windowed Chrome
+  * [Selenium](http://www.seleniumhq.org/docs/01_introducing_selenium.jsp) - real Chrome, Firefox, Safari, Internet Explorer and Opera browsers
 
 ## Getting started
 ### 1. Install Chimp in your project:
-
 ```
 npm i --save-dev chimp@next 
 ```
 *Note: the `@next` tag will be removed once Chimp 2.0 is released.*
 
-### 2. Import the Chimp `driver`
-
-Use the import statement that matches the test framework you're using: 
+### 2. Import the Chimp `driver` 
 ```javascript
-// Mocha
-import driver from 'chimp/mocha/driver'
-
-// Jest
-import driver from 'chimp/jest/driver'      
-
-// Jasmine
-import driver from 'chimp/jasmine/driver'
-
-// AVA
-import driver from 'chimp/ava/driver'
-
-// Cucumber
-import driver from 'chimp/cucumber/driver'
-
-// Generic (used for custom test frameworks / web automation)
-import driver from 'chimp/driver' // (TODO)
+import driver from 'chimp/driver'
 ```
 
 ### 3. Use the `driver` object with the Chimp API
-You get a fully initialized driver that you can automate using ES6's `async/await` to manage asynchrony like this:
-
 ```javascript
-describe('The Xolv.io Website', function () {
-  it('should have a title', async function () {
-    await driver.url('https://xolv.io')
+await driver.url('http://xolv.io')
 
-    const title = await driver.getTitle()
+const title = await driver.getTitle()
 
-    expect(title).toEqual('Xolv.io')
-  })
-})
-```
-
-Save this file to `my-spec.js` and run it using your preferred runner, like Mocha's CLI for example:
-
-```bash
-mocha --compilers js:babel-core/register my-spec.js
+console.log(title)
 ```
 
 That's it!
 
-### Drivers (formerly Browsers)
+See examples of Chimp in action:
+* [Mocha](./test-project/mocha.spec.js)
+* [Jest](./test-project/jest.spec.js)
+* [Jasmine](./test-project/jasmine.spec.js)
+* [AVA](./test-project/ava.spec.js)
+* [Cucumber](./test-project/features)
+* [Cypress]() TODO
+* [Meteor]() TODO
+* [Performance Test]() TODO
+* [Web Automation]() TODO
+
+### The Chimp Driver (formerly Browser)
 In previous versions of Chimp, the automation object was a `browser`, and now it's a `driver`. This is because the driver may not always be a browser. For example, when you use Chimp with React, Chimp will use Enzyme + JSDOM, which is not a browser per se. 
 
 Chimp provides a **common API** that can **interchangeably** be used across the following driver configurations:
@@ -90,22 +69,47 @@ Chimp provides a **common API** that can **interchangeably** be used across the 
 - [x] WebdriverIO + ChromeDriver 
 - [ ] WebdriverIO + Selenium Standalone (local Firefox/IE/Safari)
 - [ ] WebdriverIO + Selenium Grid (remote Firefox/IE/Safari - e.g. BrowserStack)
-- [ ] Chromeless
 - [ ] Puppeteer
+- [ ] Cypress
 
 Wait.. what? Interchangeably?  
 
 Yes! You can Chimp's common API and swap out the driver based on your needs.
 
-You see we love to reuse code, and we have found that it saves a lot of time to write page objects that can be use both in unit and in end-to-end testing. Here are some examples:
+You see we love to reuse code, and we have found that it saves a lot of time to write automation code that can be used for multiple purposes across testing boundaries, drivers browsers and frameworks. For example, take this page object:
 
-- [ ] Page object that works in Enzyme and with WebdriverIO + ChromeDriver (TODO)
-- [ ] Page object that works in Enzyme and with Chromeless (TODO)
+```javascript
+// a universal page object implementation
+// TODO
+``` 
 
+```javascript
+// # Unit test, Mocha framework, Enzyme driver, JSDOM browser
+// TODO
+```
 
+```javascript
+// # Functional test, Cypress (Mocha) framework, Cypress driver, Chrome windowed browser
+// load a browser with all dependencies
+// TODO
+```
+
+```javascript
+// # Functional test, Jest framework, Puppeteer driver, Chrome headless browser
+// TODO
+```
+
+```javascript
+// # Acceptance test, Cucumber.js framework, WebdriverIO driver, Chromedriver + windowed Chrome
+// TODO 
+```
+
+```javascript
+// # Functional test, Jest framework, Puppeteer driver, Chrome headless on AWS
+// TODO
+```
 
 For the full Chimp API, [see the API docs below](#chimp-api)
-
 
 ### Debugging
 Need to see what the driver is doing? No problem, just append `.debug` to your driver import like this:
@@ -117,17 +121,9 @@ import driver from 'chimp/<test-framework>/driver.debug';
 Chimp will give you a non-headless driver so you can do your job. This is very powerful when it's used with [Webdriver.io's REPL debug method](http://webdriver.io/api/utility/debug.html) like this:
 
 ```javascript
-describe('The Xolv.io Website', function () {
-  it('should have a title', async function () {
-    await driver.url('https://xolv.io')
+const title = await driver.getTitle()
 
-    const title = await driver.getTitle()
-    
-    await driver.debug() // you can now use the console REPL interface
-
-    expect(title).toEqual('Xolv.io')
-  })
-})
+await driver.debug() // you can now use the console REPL interface
 ```
 
 Note: Be sure to set the test timeout value of your test framework to be high so it does not timeout and stop the test while you are debugging. Here's how you do this in the different testing frameworks:
@@ -148,11 +144,7 @@ Chimp does not care who or what is doing the watching, so long as Chimp is runni
 Chimp has evolved from a Meteor project and we will always provide 1st class support for Meteor. You can get access to a DDP connection by doing the following:
 
 ```javascript
-import server from 'chimp/mocha/meteor/server'    // Mocha
-import server from 'chimp/jest/meteor/server'     // Jest
-import server from 'chimp/jasmine/meteor/server'  // Jasmine
-import server from 'chimp/cucumber/meteor/server' // Cucumber
-import server from 'chimp/ava/meteor/server'      // AVA
+import server from 'chimp/meteor/server'
 ``` 
 
 Then you can use this `server` object to make DDP calls like this:
@@ -230,7 +222,6 @@ This can be anywhere up the directory tree. The file looks something like this:
 Chimp has support for the drivers listed below. Click on each entry to see the available configuration options:
 * [`enzyme`](#enzyme)
 * [`webdriverio`](#webdriverio)
-* [`chromeless`](#chromeless)
 * [`puppeteer`](#puppeteer)
 
 
@@ -257,19 +248,13 @@ When using a browser other than Chrome with WebdriverIO, Chimp will automaticall
 * An OS that has an X windows manager (will not work on OSX) 
 * Compatible version of Java to run Selenium
 
-
-###### chromeless
-TODO
-
 ###### puppeteer
 TODO
 
 ##### meteor
 TODO
 
-
 ## Chimp API
-
 
 #### addCommand({name, implementations})
  
@@ -299,12 +284,16 @@ TODO
  * Below you can find links to the driver APIs used by Chimp: 
  *   [WebdriverIO]() TODO
  *   [Enzyme]() TODO
- *   [Chromeless()]() TODO
  *   [Puppeteer]() TODO
  * 
  * @return {object}  - The driver being used in the current context
  */
 ```
+
+## How Chimp works
+What is this trickery you might ask yourself? How is Chimp providing a ready to use browser simply with an `import`/`require`?
+
+TODO
 
 ---
 
@@ -356,7 +345,6 @@ TODO
 
 ###### `npm run reset`
 TODO 
-
 
 ## Releasing
 1. Increase the version in the `chimp/package.json` file
