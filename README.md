@@ -151,14 +151,14 @@ describe('Login Component', () => {
       
       expect(loginComponent.username).to.be.visible()
     })
+    // Feel free to also write unit tests without page objects
     it('should not make a data if the username field is empty', () => {
-      // but feel free to also write comlex unit tests without page objects
       const props = { request: td.function() }
       const wrapper = shallow(<LoginComponent {...props}/>)
       
       wrapper.find(CustomButton).click()
       
-      td.verify(props.request(), {times: 0, ignoreExtraArgs: true})
+      td.verify(props.request(), {times: 0})
     })
   })
 })
@@ -220,6 +220,8 @@ import driver from 'chimp/driver.debug'
 ```
 
 Chimp will give you a non-headless driver so you can do your job. This is very powerful when it's used with [Webdriver.io's REPL debug method](http://webdriver.io/api/utility/debug.html) like this:
+
+TODO how does this work with Enzyme and Puppeteer?
 
 ```javascript
 import driver from 'chimp/driver.debug'

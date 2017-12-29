@@ -19,10 +19,33 @@
   * [x] Example of imports, debug mode etc
   * [x] Meteor DDP connections example
   * [ ] Where to go for other framework docs
-  * [ ] Selenium Server integration + auto XVFB https://www.npmjs.com/package/xvfb
-  * [ ] SauceLabs integration
-  * [ ] BrowserStack integration
-  * [ ] TestingBot integration
+  * [ ] Selenium Server integration + auto Xvfb https://www.npmjs.com/package/xvfb
+  * [ ] SauceLabs example
+  * [ ] BrowserStack example
+  * [ ] CI examples
+    * [ ] TestingBot
+    * [ ] TravisCI
+    * [ ] CircleCI
+    * [ ] CodeShip
+    * [ ] Jenkins
+  * [ ] Test Framework Examples (expose from the test-project)
+    * [ ] Mocha with Enzyme
+    * [ ] Mocha with WebdriverIO
+    * [ ] Mocha with Puppeteer
+    * [ ] Jest with Enzyme
+    * [ ] Jest with WebdriverIO
+    * [ ] Jest with Puppeteer
+    * [ ] Jasmine with Enzyme
+    * [ ] Jasmine with WebdriverIO
+    * [ ] Jasmine with Puppeteer
+    * [ ] AVA with Enzyme
+    * [ ] AVA with WebdriverIO
+    * [ ] AVA with Puppeteer
+    * [ ] Cucumber.js with Enzyme
+    * [ ] Cucumber.js with WebdriverIO
+    * [ ] Cucumber.js with Puppeteer
+    * [ ] Cypress
+    
 * [ ] Automated Javascript Docs for API output (jsdoc?)
 
 ### Should
@@ -39,8 +62,9 @@
 * [ ] Cucumber smart watch mode (using code coverage Wallaby style)  
 * [ ] Session reuse module (belongs in Webdriver.io)
 * [ ] Appium support (a downloader like Selenium)
-* [ ] Should we support [Puppeteer](https://github.com/GoogleChrome/puppeteer)?
 * [ ] Support custom frameworks (expose factory + supporting code)
+* [ ] Automatically detect the test framework
+* [ ] Only start chromedriver on first use of the API (instead of at import time like it currently is)
 
 ## Plan
 * *alpha release* 
