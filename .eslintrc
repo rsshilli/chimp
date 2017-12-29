@@ -2,7 +2,7 @@
   "extends": "standard",
   "globals": {
     "jasmine": true,
-    "browser": true,
+    "driver": true,
     "td": true,
     "describe": true,
     "it": true,

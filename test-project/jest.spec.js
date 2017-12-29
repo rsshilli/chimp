@@ -1,14 +1,13 @@
-import expect from 'expect'
-import browser from 'chimp/jest/browser'
+import driver from 'chimp/driver'
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000000
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60 * 1000
 
-describe('Chimp Jest', function () {
-  it('browser should navigate', async function () {
-    await browser.url('https://google.com/')
+describe('The Xolv.io Website', function () {
+  it('should have a title', async function () {
+    await driver.url('http://xolv.io')
 
-    const title = await browser.getTitle()
+    const title = await driver.getTitle()
 
-    expect(title).toEqual('Google')
+    expect(title).toEqual('Xolv.io')
   })
 })

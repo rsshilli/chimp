@@ -1,12 +1,12 @@
-export function beforeHook (browser, filename) {
+export function beforeHook (driver, filename) {
   return async function () {
     delete require.cache[filename]
-    await browser.init()
+    await driver.init()
   }
 }
 
-export function afterHook (browser) {
+export function afterHook (driver) {
   return async function () {
-    await browser.end()
+    await driver.end()
   }
 }

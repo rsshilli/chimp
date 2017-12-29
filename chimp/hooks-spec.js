@@ -3,31 +3,31 @@ import {beforeHook, afterHook} from './hooks'
 describe('Hooks', function () {
   describe('beforeHook', function () {
     it('should prevent node from caching the provided filename module', async function () {
-      const browser = {init: td.function()}
-      td.when(browser.init()).thenResolve()
+      const driver = {init: td.function()}
+      td.when(driver.init()).thenResolve()
       require.cache['some/module/file.js'] = 'cached item'
 
-      beforeHook(browser, 'some/module/file.js')()
+      beforeHook(driver, 'some/module/file.js')()
 
       expect(require.cache['some/module/file.js']).to.equal(undefined)
     })
-    it('should init the browser session', function () {
-      const browser = {init: td.function()}
-      td.when(browser.init()).thenResolve()
+    it('should init the driver session', function () {
+      const driver = {init: td.function()}
+      td.when(driver.init()).thenResolve()
 
-      beforeHook(browser)()
+      beforeHook(driver)()
 
-      td.verify(browser.init())
+      td.verify(driver.init())
     })
   })
   describe('afterHook', function () {
-    it('should end the browser session', function () {
-      const browser = {end: td.function()}
-      td.when(browser.end()).thenResolve()
+    it('should end the driver session', function () {
+      const driver = {end: td.function()}
+      td.when(driver.end()).thenResolve()
 
-      afterHook(browser)()
+      afterHook(driver)()
 
-      td.verify(browser.end())
+      td.verify(driver.end())
     })
   })
 })

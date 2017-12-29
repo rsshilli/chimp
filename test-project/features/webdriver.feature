@@ -1,15 +1,9 @@
-Feature: Use browser inside steps
+Feature: Use driver inside steps
 
+  In order to focus on writing ui based acceptance tests
   As a developer
-  I want to have webdriver available to me in my steps
-  So that I don't have to configure my world object and I focus on testing
+  I want a configured web-based driver available to me in my steps
 
-  @watch
-  Scenario: Visit Google
-    When  I visit "http://www.google.com"
-    Then  I see the title of "Google"
-
-  @not-watch
-  Scenario: Visit Github
-    When  I visit "http://www.github.com"
-    Then  I see the title of "The world's leading software development platform · GitHub"
+  Scenario: Driver is available in Cucumber.js steps
+    When  I use the driver to navigate to a site like http://xolv.io
+    Then  I see assert on things like it's title like Xolv.io

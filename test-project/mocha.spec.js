@@ -1,12 +1,12 @@
-import expect from 'expect'
-import browser from 'chimp/mocha/browser'
+import assert from 'assert'
+import driver from 'chimp/driver'
 
-describe('Chimp Mocha', function () {
-  it('browser should navigate', async function () {
-    await browser.url('https://google.com/')
+describe('The Xolv.io Website', function () {
+  it('should have a title', async function () {
+    await driver.url('http://xolv.io')
 
-    const title = await browser.getTitle()
+    const title = await driver.getTitle()
 
-    expect(title).toEqual('Google')
+    assert.equal(title, 'Xolv.io')
   })
 })

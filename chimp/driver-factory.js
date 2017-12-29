@@ -1,6 +1,6 @@
 import path from 'path'
 
-export default class BrowserFactory {
+export default class DriverFactory {
   constructor ({
     chromedriver = require('chromedriver'),
     webdriverio = require('await-webdriverio'),
@@ -18,14 +18,14 @@ export default class BrowserFactory {
     this.webdriverHubImpl = webdriverHubImpl
 
     this._maybeStartWebdriverHub()
-    return this._startBrowser()
+    return this._startDriver()
   }
 
   _maybeStartWebdriverHub () {
     if (!global[`__webdriverHub${this.port}`]) {
       const proc = this._startWebdriverHub()
       if (proc.status !== 0) {
-        throw new Error(`[Chimp.BrowserFactory] Could not start ${this.webdriverHubImpl}`)
+        throw new Error(`[Chimp.DriverFactory] Could not start ${this.webdriverHubImpl}`)
       }
       global[`__webdriverHub${this.port}`] = proc
     }
@@ -65,7 +65,7 @@ export default class BrowserFactory {
     ], {stdio: 'inherit'})
   }
 
-  _startBrowser () {
+  _startDriver () {
     return this.webdriverio.remote({
       host: this.host,
       port: this.port,

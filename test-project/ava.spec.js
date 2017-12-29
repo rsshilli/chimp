@@ -1,8 +1,8 @@
 import test from 'ava'
-import browser from 'chimp/ava/browser'
+import driver from 'chimp/driver'
 
 test(async t => {
-  await browser.url('https://google.com/')
+  await driver.url('http://xolv.io')
 
-  t.is(await browser.getTitle(), 'Google')
+  t.is(await driver.getTitle(), 'Xolv.io')
 })
