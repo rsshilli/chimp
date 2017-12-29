@@ -7,7 +7,7 @@ Chimp takes away all the pain associated with setting up libraries and tools, an
 
 ![Chimp by Xolv.io](./images/logo.png?raw=true)
 
-Whether you're writing UI Component tests, functional end-to-end tests, or user emulating performance tests, Chimp will help you do it, faster.
+Whether you're writing UI unit tests, functional end-to-end tests, or user-emulating performance tests, Chimp will help you do it, faster.
 
 Chimp allows you to:
 * Write web automation tasks such as crawling, scraping, submitting forms and taking screenshots
@@ -79,15 +79,17 @@ You see we love to reuse code, and we have found that it saves a lot of time to 
 
 ## The Chimp PageObject 
 
-For example, consider this page object:
+Chimp now contains a `PageObject` class that you can import and use in unit, integration, functional, acceptance, end-to-end and performance tests as well as any general automation tasks.
+
+To see how this magic works, refer to the inline comments in the code below.
 
 ```javascript
 import driver from 'chimp/driver'
 import PageObject from 'chimp/page-object'
 
-// 1. extend the PageObject class provided Chimp
+// 1. Extend the PageObject class provided Chimp
 class LoginComponentPageObject extends PageObject {
-  // 2. you implement the `selectors` method
+  // 2. Implement the `selectors` method
   selectors() {
     const root = '.login'
     return {
@@ -98,7 +100,7 @@ class LoginComponentPageObject extends PageObject {
       submit: `${root}__submit`,
     }
   }
-  // 3. you can now access the same keys as your selectors as elements that you can interact with to higher order functions
+  // 3. Access the UI elements using the same keys as your selectors to create high-order functions that match your domain
   async login({username, password}) {
     await this.username.type(username)
     await this.password.type(password)
@@ -106,17 +108,20 @@ class LoginComponentPageObject extends PageObject {
   }
 }
 
-// 4. You bind this page object to a context like this:
+// 4. You bind this page object to your desired context like this:
 const loginComponentPageObject = new LoginComponentPageObject()
-loginComponentPageObject.bindTo(context)
-
-// see below for examples of contexts
+loginComponentPageObject.bindTo(context) // see below for examples of context binding
 ```
 
 Note that you can also use the PageObject.extend if you prefer not to use classes. [See here.]() TODO.
 
+
+#### PageObject Reuse Example #1
+* Framework: Mocha
+* Driver: Enzyme
+* Browser: JSDOM
+
 ```javascript
-// # Unit test, Mocha framework, Enzyme driver, JSDOM browser - runs in milliseconds
 import LoginComponentPageObject from 'login-component-page-object'
 import {shallow} from 'enzyme'
 import td from 'testdouble' 
@@ -159,24 +164,49 @@ describe('Login Component', () => {
 })
 ```
 
+#### PageObject Reuse Example #2
+* Framework: Cypress (Mocha)
+* Driver: Cypress
+* Browser: Chrome (windowed)
+
 ```javascript
-// # Functional test, Cypress (Mocha) framework, Cypress driver, Chrome windowed browser
-// load a browser with all dependencies
 // TODO
 ```
 
+#### PageObject Reuse Example #3
+* Framework: Jest
+* Driver: WebdriverIO
+* Browser: Chrome (headless)
+
 ```javascript
-// # Functional test, Jest framework, Puppeteer driver, Chrome headless browser
 // TODO
 ```
 
+
+#### PageObject Reuse Example #4
+* Framework: Cucumber.js
+* Driver: WebdriverIO
+* Browser: Chrome (windowed)
+
 ```javascript
-// # Acceptance test, Cucumber.js framework, WebdriverIO driver, Chromedriver + windowed Chrome
 // TODO 
 ```
 
+#### PageObject Reuse Example #5
+* Framework: Jest
+* Driver: Puppeteer
+* Browser: Chrome (headless) on AWS Lambda
+
 ```javascript
-// # Functional test, Jest framework, Puppeteer driver, Chrome headless on AWS
+// TODO 
+```
+
+#### PageObject Reuse Example #6
+* Framework: None (generic automation)
+* Driver: Puppeteer
+* Browser: Chrome (headless)
+
+```javascript
 // TODO
 ```
 
