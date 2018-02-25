@@ -17,6 +17,7 @@ Chimp allows you to:
   * [Jasmine](https://jasmine.github.io)
   * [AVA](https://ava.li)
   * [Cucumber.js](https://github.com/cucumber/cucumber-js)  
+  * [Cypress](https://cypress.io) 
 * Use a common API across the following drivers:
   * [Enzyme](http://airbnb.io/enzyme)
   * [WebdriverIO](http://webdriver.io)

@@ -8,7 +8,9 @@
   "scripts": {
     "cucumber": "NODE_PRESERVE_SYMLINKS=1 cucumberjs --compiler js:babel-core/register",
     "mocha": "mocha --compilers js:babel-core/register --require source-map-support/register mocha*.js --timeout 100000",
+    "watch:mocha": "mocha --compilers js:babel-core/register --require source-map-support/register mocha*.js --timeout 100000 --watch",
     "jest": "jest jest.spec.js",
+    "watch:jest": "jest jest.spec.js --watch",
     "ava": "NODE_PRESERVE_SYMLINKS=1 ava ava.spec.js",
     "jasmine": "babel-node ./util/jasmine.js",
     "test": "echo Call full test suite from one directory up fro here && exit 1",
@@ -20,10 +22,17 @@
     "ava": "^0.22.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "cucumber": "2.x",
+    "enzyme-adapter-react-16": "^1.1.1",
     "expect": "^1.20.2",
     "jasmine": "^2.8.0",
-    "jest": "^20.0.4",
-    "mocha": "^3.4.2"
+    "jest": "^22.3.0",
+    "mocha": "^3.4.2",
+    "react-dom": "^16.2.0"
+  },
+  "dependencies": {
+    "enzyme": "^3.3.0",
+    "react": "^16.2.0"
   }
 }

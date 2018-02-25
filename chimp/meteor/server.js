@@ -1,5 +1,5 @@
 import DDP from './DDP'
-import FrameworkDetector from '../framework-detector'
+import FrameworkDetector from '../utils/test-framework-detector'
 
 if (!process.env['DDP_URL']) {
   throw Error('If you want to use meteor/server please set up the ROOT_URL env first' +

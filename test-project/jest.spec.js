@@ -1,13 +1,27 @@
-import driver from 'chimp/driver'
+import Enzyme, {shallow} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import React from 'react'
+import RocketLaunchButton from './src/components/rocket-launch-button'
+import RocketLaunchButtonCAPI from './src/components/rocket-launch-button-capi'
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 60 * 1000
+Enzyme.configure({adapter: new Adapter()})
 
-describe('The Xolv.io Website', function () {
-  it('should have a title', async function () {
-    await driver.url('http://xolv.io')
+describe('Button', () => {
+  describe('render', () => {
+    it('should click using the CAPI', () => {
+      let clicked = false
+      const myFunc = () => {
+        clicked = true
+      }
 
-    const title = await driver.getTitle()
+      const wrapper = shallow(<RocketLaunchButton handleClick={myFunc}/>)
+      const rocketLaunchButtonCAPI = new RocketLaunchButtonCAPI({wrapper})
 
-    expect(title).toEqual('Xolv.io')
+      rocketLaunchButtonCAPI.startLaunchSequence()
+
+      expect(clicked).toBe(true)
+
+      rocketLaunchButtonCAPI.doSomething()
+    })
   })
 })

@@ -11,6 +11,7 @@
 * [ ] Rewrite `DDP` module using using TDD
 * [ ] Externalize *all* configs (timeouts etc)
 * [ ] Put decent logging system in place
+* [ ] Allow Webdriver.io REPL mode when in JEST
 * [ ] Cucumber simple watch module (using @watch tags and all file changes) - Instructions for Gulp/Grunt
 * [ ] Amazing documentation + examples
   * [ ] Diagrams + text showing how Chimp works
